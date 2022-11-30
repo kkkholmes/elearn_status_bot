@@ -10,14 +10,31 @@ bot.start((ctx) => {
         try {
           const status = await urlStatusCode(url)
           console.log(status)
-          await ctx.reply(`Elearn Status : працює 🟢
-станом на ${new Date().toLocaleString()}`);
-        } catch (error) {
-          console.error(error)
-          await ctx.reply(`Elearn Status : лежить 🔴
-станом на ${new Date().toLocaleString()}`);
+          await ctx.replyWithAnimation({ source: 'animations/cat1.gif' }, { caption: `Elearn Status : працює 🟢
+станом на ${new Date().toLocaleString()}`});
+              } catch (error) {
+                console.error(error)
+                await ctx.replyWithAnimation({ source: 'animations/cat2.gif' }, { caption: `Elearn Status : лежить 🔴
+станом на ${new Date().toLocaleString()}`});
         }
       })()
+})
+
+bot.command('check', (ctx) => {
+  (async () => {
+    const urlStatusCode = require('url-status-code')
+    const url = 'https://elearn.nubip.edu.ua/'
+    try {
+      const status = await urlStatusCode(url)
+      console.log(status)
+      await ctx.replyWithAnimation({ source: 'animations/cat1.gif' }, { caption: `Elearn Status : працює 🟢
+станом на ${new Date().toLocaleString()}`});
+          } catch (error) {
+            console.error(error)
+            await ctx.replyWithAnimation({ source: 'animations/cat2.gif' }, { caption: `Elearn Status : лежить 🔴
+станом на ${new Date().toLocaleString()}`});
+    }
+  })()
 })
 
 bot.hears('!elearn', (ctx) => 
@@ -27,12 +44,12 @@ bot.hears('!elearn', (ctx) =>
     try {
       const status = await urlStatusCode(url)
       console.log(status)
-      await ctx.reply(`Elearn Status : працює 🟢
-станом на ${new Date().toLocaleString()}`);
+      await ctx.replyWithAnimation({ source: 'animations/cat1.gif' }, { caption: `Elearn Status : працює 🟢
+станом на ${new Date().toLocaleString()}`});
     } catch (error) {
       console.error(error)
-      await ctx.reply(`Elearn Status : лежить 🔴
-станом на ${new Date().toLocaleString()}`);
+      await ctx.replyWithAnimation({ source: 'animations/cat2.gif' }, { caption: `Elearn Status : лежить 🔴
+станом на ${new Date().toLocaleString()}`});
     }
   })()})
 
